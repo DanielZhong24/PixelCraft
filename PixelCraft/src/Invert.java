@@ -21,18 +21,22 @@ public class Invert extends Converter {
 		if (y >= height) {
 			return;
 		}
-
-		for (x = 0; x < width; x++) {
-			ARGB argb = new ARGB(image.getRGB(x,y));
-			int newRed = 255 - argb.red;
-			int newGreen = 255 - argb.green;
-			int newBlue = 255 - argb.blue;
-			
-			inverted.setRGB(x, y, new ARGB(argb.alpha, newRed, newGreen, newBlue).toInt());
-			
-		}
 		
-		invert(image, inverted, x, y+1, width, height);
+		if (x >= width) {
+			invert(image, inverted, 0, y+1, width, height);
+			return;
+		}
+
+		ARGB argb = new ARGB(image.getRGB(x,y));
+		int newRed = 255 - argb.red;
+		int newGreen = 255 - argb.green;
+		int newBlue = 255 - argb.blue;
+		
+		inverted.setRGB(x, y, new ARGB(argb.alpha, newRed, newGreen, newBlue).toInt());
+			
+	
+		
+		invert(image, inverted, x+1, y, width, height);
 		
 	}
 }
