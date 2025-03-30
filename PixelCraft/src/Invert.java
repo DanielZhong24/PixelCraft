@@ -27,7 +27,7 @@ public class Invert extends Converter {
 			return;
 		}
 		
-		// Moves to next column when x reaches image width
+		// Moves to next row when x reaches image width
 		if (x >= width) {
 			invert(image, inverted, 0, y+1, width, height);
 			return;
@@ -43,7 +43,7 @@ public class Invert extends Converter {
 		inverted.setRGB(x, y, new ARGB(argb.alpha, newRed, newGreen, newBlue).toInt());
 			
 	
-		// Moves to the next pixel in the row
+		// Moves to the next pixel in the column
 		invert(image, inverted, x+1, y, width, height);
 		
 	}
