@@ -16,9 +16,14 @@ public class Grayscale extends Converter {
         // Loop through each pixel
         for (int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                ARGB argb = new ARGB(image.getRGB(x, y));          // Extract ARGB color values
-                int gray = (argb.red + argb.green + argb.blue) / 3; // Calculate the average for grayscale
-                grayscaleImage.setRGB(x, y, new ARGB(argb.alpha, gray, gray, gray).toInt());  // Set grayscale pixel
+                // Extract ARGB color values from the current pixel
+                ARGB argb = new ARGB(image.getRGB(x, y));
+                
+                // Calculate the grayscale value by averaging the red, green, and blue components
+                int gray = (argb.red + argb.green + argb.blue) / 3;
+                
+                // Set the new grayscale pixel with the same alpha value
+                grayscaleImage.setRGB(x, y, new ARGB(argb.alpha, gray, gray, gray).toInt());
             }
         }
 
