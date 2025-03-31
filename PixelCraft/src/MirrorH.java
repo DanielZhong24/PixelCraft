@@ -1,7 +1,7 @@
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 
-public class Swirl extends Converter {
+public class MirrorH extends Converter {
 	
 	@Override
 	public void convert(String inputFileName, String outputFileName) throws IOException {
